@@ -1,0 +1,164 @@
+/* src/extension/styles/components.css */
+
+/* --- Common Variables --- */
+:root {
+  --card-border: var(--vscode-editorWidget-border);
+  --card-background: var(--vscode-editor-background);
+  --card-color: var(--vscode-foreground);
+  --button-background: var(--vscode-button-background);
+  --button-foreground: var(--vscode-button-foreground);
+  --button-hoverBackground: var(--vscode-button-hoverBackground);
+  --card-hoverBackground: var(--vscode-sideBar-background);
+  --card-hoverIconBackground: var(--vscode-list-hoverBackground);
+  --text-primary: var(--vscode-tab-activeForeground);
+  --text-secondary: var(--vscode-tab-inactiveForeground);
+  --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Card Styles --- */
+.card {
+  display: flex;
+  flex-direction: row;
+  flex: 1 0 calc(50% - 1rem);
+  min-width: 300px;
+  box-sizing: border-box;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  background-color: var(--card-background);
+  box-shadow: var(--card-shadow);
+  color: var(--text-secondary);
+  padding: 1.25em;
+  max-width: 100%;
+}
+
+.card:hover {
+  cursor: pointer;
+  color: var(--text-primary);
+  background-color: var(--card-hoverBackground);
+}
+
+.card:hover .card-icon {
+  background-color: var(--button-background);
+  border-color: var(--button-background);
+  fill: var(--button-foreground);
+}
+
+/* Check these to fix icon coloring on hover for light themes */
+.card-icon svg {
+  fill: none;
+}
+
+.card:hover .card-icon svg {
+  fill: var(--button-foreground);
+}
+
+/* Define the bouncy pop animation with rotation */
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.2) rotate(-5deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  75% {
+    transform: scale(1.05) rotate(-5deg);
+  }
+}
+
+/* Apply the animation on hover */
+.card:hover .card-icon svg {
+  animation: bounce 0.6s ease-in-out;
+}
+
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  background-color: var(--card-background);
+  padding: 0.5rem;
+}
+
+.card-icon svg {
+  width: 2em;
+  height: 2em;
+  fill: currentColor;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  gap: 0.15em;
+}
+
+.card-content h2 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Button styles for any card button */
+.button {
+  cursor: pointer;
+  padding: 6px 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  background-color: var(--button-background);
+  color: var(--button-foreground);
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+  margin-top: 12px;
+}
+
+.button:hover {
+  background-color: var(--button-hoverBackground);
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+/* Other workflow step styles remain unchanged below */
+.workflow-steps-container {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  padding: 12px;
+  background-color: var(--vscode-editor-background);
+  border: 1px solid var(--vscode-editorWidget-border);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: var(--vscode-foreground);
+}
+
+.workflow-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--vscode-editorWidget-border);
+  border-radius: 4px;
+  background-color: var(--vscode-editor-background);
+}
+
+.workflow-step-title {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--vscode-foreground);
+}
+
+.workflow-step-description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--vscode-foreground);
+}

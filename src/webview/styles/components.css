@@ -1,0 +1,336 @@
+/* src/webview/styles/components.css */
+
+/* Text Area Input Styles */
+.text-area-input {
+  border: 1px solid var(--vscode-editorWidget-border, #ddd);
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 1rem;
+  margin: 10px 0;
+  height: calc(1.5em * 3 + 30px);
+  min-width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  background-color: var(--vscode-editor-background);
+  color: var(--vscode-foreground);
+  resize: none;
+}
+
+.text-area-input:focus {
+  outline: none;
+  border-color: var(--vscode-focusBorder, #007fd4);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Text Card Styles */
+.text-card {
+  border: 1px solid var(--vscode-editorWidget-border, #ddd);
+  border-radius: 4px;
+  padding: 15px;
+  background-color: var(--vscode-editor-background);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+}
+
+.text-card-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+  color: var(--vscode-foreground);
+}
+
+.text-card-content {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--vscode-foreground);
+}
+
+/* Tab Bar Styles */
+.tab-bar {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid var(--vscode-sideBar-border);
+  margin: 12px 0 0 0;
+  gap: 12px;
+  padding: 0 12px 12px 12px;
+}
+
+.tab-bar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  background: transparent;
+  cursor: pointer;
+  color: var(--vscode-foreground);
+  font-size: 0.75rem;
+  transition: background-color 0.2s;
+  border-radius: 4px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  outline: 1px solid var(--vscode-sideBar-border);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.tab-bar-item.active {
+  outline-color: var(--vscode-button-background, #007fd4); /* Use outline instead */
+  background-color: var(--vscode-button-background, #007fd4);
+  color: var(--vscode-button-foreground, #fff);
+}
+
+.tab-bar-item:hover {
+  background-color: var(--vscode-list-hoverBackground);
+}
+
+.tab-bar-icon svg {
+  width: 1.9em;
+  height: 1.9em;
+  fill: currentColor;
+}
+
+.tab-bar-label {
+  line-height: 1;
+}
+
+/* Background slide effect */
+.tab-bar-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: var(--vscode-button-background, #007fd4);
+  z-index: -1;
+  transition: height 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.tab-bar-item:hover::after {
+  height: 4px;
+}
+
+.tab-bar-item.active::after {
+  height: 100%;
+}
+
+/* Subtle scale effect on hover */
+.tab-bar-item:hover {
+  transform: translateY(-2px);
+}
+
+/* Scale down slightly on active/click */
+.tab-bar-item:active {
+  transform: scale(0.98);
+}
+
+/* Icon animation */
+.tab-bar-icon {
+  transition: transform 0.3s ease;
+}
+
+.tab-bar-item:hover .tab-bar-icon {
+  transform: translateY(-1px);
+}
+
+.tab-bar-item.active .tab-bar-icon {
+  transform: scale(1.1);
+}
+
+/* Label animation */
+.tab-bar-label {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.tab-bar-item:hover .tab-bar-label {
+  transform: translateY(-1px);
+}
+
+/* Expandable Menu Styles */
+.expandable-menu {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  color: var(--vscode-foreground);
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  margin: 0;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+/* First level menu items */
+.menu-item:not(.menu-item-level-1):not(.menu-item-level-2) {
+  border: 1px solid var(--vscode-sideBar-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Menu item header styles */
+.menu-item-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 12px;
+  gap: 8px;
+}
+
+/* Hover effect for all headers */
+.menu-item-header:hover {
+  background-color: var(--vscode-list-hoverBackground);
+}
+
+/* First level header appearance */
+.menu-item:not(.menu-item-level-1):not(.menu-item-level-2) > .menu-item-header {
+  font-weight: bold;
+}
+
+/* Second level background and styling */
+.menu-item-level-1 > .menu-item-header {
+  background-color: var(--vscode-editor-background);
+}
+
+.menu-item-level-1 > .menu-item-header:hover {
+  background-color: var(--vscode-list-hoverBackground);
+}
+
+/* Container for nested children */
+.menu-item-children {
+  overflow: hidden;
+  transition: max-height 0.2s ease-out, opacity 0.2s ease-out;
+}
+
+/* Divider line to separate 1st level and 2nd level items */
+.menu-item-divider {
+  border-top: 1px solid var(--vscode-sideBar-border);
+  margin: 0;
+  padding: 0;
+}
+
+/* Collapsed state: hidden, zero height */
+.menu-item-children.collapsed {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Expanded state: show content */
+.menu-item-children.expanded {
+  max-height: 1000px; /* sufficiently large for nested items */
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Icon container for chevron */
+.menu-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+/* Rotate icon when menu is expanded */
+.menu-item-icon.rotated {
+  transform: rotate(180deg);
+}
+
+/* Title style */
+.menu-item-title {
+  flex-grow: 1;
+}
+
+/* Section Header Component Styles */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin-bottom: 1.5em;
+  margin-top: 6px;
+}
+
+.section-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+}
+
+.section-header-tag {
+  background-color: var(--vscode-button-background, #007fd4);
+  color: var(--vscode-button-foreground, #fff);
+  padding: 0.25em 0.65em;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.section-header-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--vscode-foreground);
+}
+
+.section-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.section-header-right svg {
+  width: 1.5em;
+  height: 1.5em;
+  fill: var(--vscode-editorWidget-border);
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--vscode-button-background, #007fd4);
+  color: var(--vscode-button-foreground, #fff);
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  transition: background-color 0.2s ease;
+  font-size: 0.875rem;
+}
+
+button:hover {
+  background-color: var(--vscode-button-hoverBackground, #005a9e);
+}
+
+button:focus {
+  outline: 1px solid var(--vscode-focusBorder, #007fd4);
+}
+
+/* For small inline buttons (like Check System) */
+button.kai-check-btn {
+  display: inline-block;
+  padding: 0.25em 6px;
+  font-size: 0.8rem;
+  margin-top: 6px;
+  vertical-align: middle;
+}
+
+/* Generic input/textarea styling */
+input[type="text"],
+textarea {
+  background-color: var(--vscode-editor-background, #1e1e1e);
+  color: var(--vscode-foreground, #ccc);
+  border: 1px solid var(--vscode-editorWidget-border, #ddd);
+  border-radius: 4px;
+  padding: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: 1px solid var(--vscode-focusBorder, #007fd4);
+}

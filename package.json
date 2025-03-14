@@ -1,0 +1,66 @@
+{
+  "name": "edupunk-os-extension",
+  "displayName": "Edupunk OS",
+  "publisher": "khthondev",
+  "description": "Homebrew AI Lab in VS Code",
+  "version": "0.1.2",
+  "type": "commonjs",
+  "engines": {
+    "vscode": "^1.77.0"
+  },
+  "categories": [
+    "Education"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/khthondev/edupunk-os.git"
+  },
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "edupunk-os.showPanel",
+        "title": "Show Edupunk OS Panel"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "edupunk-os",
+          "title": "Edupunk OS",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "edupunk-os": [
+        {
+          "id": "edupunk-os.panel",
+          "name": "Edupunk OS",
+          "type": "webview",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./ && tsc -p ./tsconfig.webview.json",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "pretest": "npm run compile && npm run lint",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.126",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "autoprefixer": "^10.4.12",
+    "esbuild": "^0.25.1",
+    "eslint": "^8.33.0",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.2.0",
+    "typescript": "^4.9.5"
+  }
+}
